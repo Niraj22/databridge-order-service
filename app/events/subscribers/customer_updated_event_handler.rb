@@ -1,6 +1,7 @@
+# app/events/subscribers/customer_updated_event_handler.rb
 module Events
-    module Subscribers
-      class CustomerUpdatedEventHandler
+  module Subscribers
+    class CustomerUpdatedEventHandler
         def handle(event)
           # Event handling logic here
           Rails.logger.info("Received CustomerUpdated event: #{event.inspect}")
