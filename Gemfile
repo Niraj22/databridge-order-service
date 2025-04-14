@@ -48,11 +48,11 @@ end
 # Add these to your Gemfile in the :development, :test group
 group :development, :test do
   gem 'rspec-rails', '~> 6.0'
-  gem 'rswag-api'
-  gem 'rswag-ui'
   gem 'rswag-specs'
 end
 
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'jwt'                         
 gem 'kaminari'   
 gem 'databridge_shared', git: 'https://github.com/Niraj22/databridge_shared'
