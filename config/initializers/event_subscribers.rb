@@ -11,6 +11,10 @@ Rails.application.config.after_initialize do
       consumer_group: kafka_config[:consumer_group]
     )
     
+    require Rails.root.join('app/events/subscribers/customer_updated_event_handler')
+    require Rails.root.join('app/events/subscribers/product_updated_event_handler')
+    require Rails.root.join('app/events/subscribers/inventory_changed_event_handler')
+    
     # Register event handlers
     subscriber.subscribe('CustomerUpdated', Events::Subscribers::CustomerUpdatedEventHandler.new)
     subscriber.subscribe('ProductUpdated', Events::Subscribers::ProductUpdatedEventHandler.new)
