@@ -16,9 +16,9 @@ Rails.application.config.after_initialize do
     require Rails.root.join('app/events/subscribers/inventory_changed_event_handler')
     
     # Register event handlers
-    subscriber.subscribe('CustomerUpdated', Events::Subscribers::CustomerUpdatedEventHandler.new)
-    subscriber.subscribe('ProductUpdated', Events::Subscribers::ProductUpdatedEventHandler.new)
-    subscriber.subscribe('InventoryChanged', Events::Subscribers::InventoryChangedEventHandler.new)
+    subscriber.subscribe('CustomerUpdated', ::Events::Subscribers::CustomerUpdatedEventHandler.new)
+    subscriber.subscribe('ProductUpdated', ::Events::Subscribers::ProductUpdatedEventHandler.new)
+    subscriber.subscribe('InventoryChanged', ::Events::Subscribers::InventoryChangedEventHandler.new)
     
     Rails.logger.info "Order Service event subscribers registered successfully"
   rescue => e
