@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   # Health check endpoint
-  root to: proc { [200, {}, ['DataBridge Customer Service']] }
+  root to: proc { [200, {}, ['DataBridge Order Service']] }
 end
