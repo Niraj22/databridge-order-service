@@ -1,9 +1,9 @@
 ---
 openapi: 3.0.1
 info:
-  title: DataBridge Product Service API
+  title: DataBridge Order Service API
   version: v1
-  description: API for managing products, categories, and inventory
+  description: API for managing customer orders, order items, and order status tracking
 components:
   securitySchemes:
     bearer_auth:
