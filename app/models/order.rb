@@ -41,7 +41,11 @@ class Order < ApplicationRecord
         created_at: created_at.iso8601
       }
       
-      publisher = DataBridgeShared::Clients::EventPublisher.new
+      kafka_config = Rails.application.credentials.kafka
+      publisher = DataBridgeShared::Clients::EventPublisher.new(
+        seed_brokers: kafka_config[:brokers],
+        client_id: kafka_config[:client_id]
+      )
       publisher.publish('OrderCreated', event_data)
     end
     
@@ -54,7 +58,11 @@ class Order < ApplicationRecord
         updated_at: updated_at.iso8601
       }
       
-      publisher = DataBridgeShared::Clients::EventPublisher.new
+      kafka_config = Rails.application.credentials.kafka
+      publisher = DataBridgeShared::Clients::EventPublisher.new(
+        seed_brokers: kafka_config[:brokers],
+        client_id: kafka_config[:client_id]
+      )
       publisher.publish('OrderStatusChanged', event_data)
     end
   end

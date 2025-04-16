@@ -34,7 +34,11 @@ class Payment < ApplicationRecord
       processed_at: updated_at.iso8601
     }
     
-    publisher = DataBridgeShared::Clients::EventPublisher.new
+    kafka_config = Rails.application.credentials.kafka
+    publisher = DataBridgeShared::Clients::EventPublisher.new(
+      seed_brokers: kafka_config[:brokers],
+      client_id: kafka_config[:client_id]
+    )
     publisher.publish('PaymentProcessed', event_data)
     
     # Update order status if payment is completed or failed
